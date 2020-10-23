@@ -1,0 +1,41 @@
+const express = require('express')
+const bodyParser = require('body-parser')
+const rootRoute = require('./routes/rootRoute')
+const addItems = require('./routes/items/addItems')
+const getItems = require('./routes/items/getItems')
+const editItems = require('./routes/items/editItems')
+const deleteItems = require('./routes/items/deleteItems')
+const addUsers = require('./routes/users/AddUsers')
+const getUsers = require('./routes/users/getUsers')
+const editUsers = require('./routes/users/editUsers')
+const deleteUsers = require('./routes/users/deleteUsers')
+const addTransactions = require('./routes/transactions/addTransactions')
+const getTransactions = require('./routes/transactions/getTransactions')
+const editTransactions = require('./routes/transactions/editTransactions')
+const deleteTransactions = require('./routes/transactions/deleteTransactions')
+const registerRoutes = require('./routes/registerRoute')
+const loginRoutes = require('./routes/loginRoutes')
+
+const app = express()
+app.use(rootRoute)
+
+app.use(bodyParser.json())
+app.use(loginRoutes)
+app.use(addItems)
+app.use(getItems)
+app.use(editItems)
+app.use(deleteItems)
+app.use(addUsers)
+app.use(getUsers)
+app.use(editUsers)
+app.use(deleteUsers)
+
+app.use(getTransactions)
+app.use(addTransactions)
+app.use(editTransactions)
+app.use(deleteTransactions)
+
+const port = 3000
+app.listen(port, () => {
+  console.log(`Backend app is running in http://localhost:${port}`);
+})
